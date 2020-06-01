@@ -32,9 +32,9 @@ function App() {
   const classes = useStyles();
 
   const programmaticExample = () => {
-    console.log('started');
     const intro = introJs();
     intro.setOptions({
+      disableInteraction: true,
       steps: [
         { 
           intro: "This step isn't connected to any particular element"
@@ -64,15 +64,13 @@ function App() {
         }
       ]
     });
-
-    console.log('sigh');
-    console.log(intro);
-
     intro.start();
-    console.log('started hypothetically');
-
-
   }
+
+  const htmlExample = () => {
+    const intro = introJs();
+    intro.start();
+  };
 
   const exampleHTMLCode = `<h1 data-step="1" data-intro="This is a tooltip!">Example</h1>`;
   const quickStart = `
@@ -146,16 +144,16 @@ tour.setOption('positionPrecedence', ['left', 'right', 'top', 'bottom']);`;
           </CardActions>
         </Card>
 
-        <Card variant="outlined" className={classes.card} >
+        <Card variant="outlined" className={classes.card} data-intro="Last example" data-step={3}>
           <CardContent>
-            <Typography variant="h3" gutterBottom>
+            <Typography variant="h3" gutterBottom data-intro="Example" data-step={1}>
               Quick Start with HTML
             </Typography>
             <Highlight language="javascript">
               {quickStart}
             </Highlight>
             <br />
-            <Typography>
+            <Typography data-intro="More examples" data-step={2}>
               And in your HTML write:
               <br />
               <Highlight language="javascript">
@@ -164,8 +162,14 @@ tour.setOption('positionPrecedence', ['left', 'right', 'top', 'bottom']);`;
               <br />
               Be sure to include <code>data-step</code> and <code>data-intro</code> for each element 
               you want to highlight.
+              Look at the other attributes you can define by looking at the <Link href="https://introjs.com/docs/intro/attributes/">documentation.</Link>
             </Typography>
           </CardContent>
+          <CardActions>
+            <Button variant="contained" onClick={htmlExample}>
+              Start Tour
+            </Button>
+          </CardActions>
         </Card>
 
         <Card variant="outlined" className={classes.card} id="step4">
@@ -176,6 +180,8 @@ tour.setOption('positionPrecedence', ['left', 'right', 'top', 'bottom']);`;
             <Typography>
               One way to write tours is writing JavaScript and JSON.
               This is the 'programmatic' way of writing tours in Intro.js.
+              <br />
+              Look at the <Link href="https://introjs.com/docs/intro/options/">documentation</Link> for a list of options to Intro.js
             </Typography>
           </CardContent>
           <CardActions>
@@ -192,6 +198,7 @@ tour.setOption('positionPrecedence', ['left', 'right', 'top', 'bottom']);`;
               <Highlight language="javascript">
                 {importCode}
               </Highlight>
+              Alternately, use the <Link href="https://www.npmjs.com/package/intro.js-react">intro.js-react library</Link>
             </Typography>
           </CardContent>
         </Card>
@@ -214,12 +221,46 @@ tour.setOption('positionPrecedence', ['left', 'right', 'top', 'bottom']);`;
           </CardContent>
         </Card>
 
-        <Typography>
-          TODO comment about Shadow DOMs
-          TODO comment about dialogs
-          TODO comment about stacking context
-        </Typography>
+        <Card variant="outlined" classNme={classes.card}>
+          <CardContent>
+            <Typography variant="h3" gutterBottom>Further Topics of Discussion</Typography>
+            <Typography>
+              <List>
+                <ListItem>
+                  Using Intro.js with Shadow DOMs
+                </ListItem>
+                <ListItem>
+                  Using Intro.js with dialog elements
+                </ListItem>
+                <ListItem>
+                  Learning about stacking contexts
+                </ListItem>
+              </List>
+            </Typography>
+          </CardContent>
+        </Card>
         
+        <Card variant="outlined" className={classes.card}>
+          <CardContent>
+            <Typography variant="h3" gutterBottom>Acknowledgments</Typography>
+            <Typography>
+              <List>
+                <ListItem>
+                  React and Create React App
+                </ListItem>
+                <ListItem>
+                  Material UI
+                </ListItem>
+                <ListItem>
+                  Thanks to Becky's family for listening to this presentation
+                </ListItem>
+                <ListItem>
+                  Thanks to James for making this possible.
+                </ListItem>
+              </List>
+            </Typography>
+          </CardContent>
+        </Card>
       </Container>
     </div>
   );
