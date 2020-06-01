@@ -160,6 +160,26 @@ function App() {
           </CardContent>
         </Card>
 
+        <Card variant="outlined" className={classes.card}>
+          <CardContent>
+            <Typography variant="h3" gutterBottom>Position the tooltips</Typography>
+            <Typography>
+              Note that it will only position itself to the indicated position so long as there is space.
+              <br /> <br />
+              To specify the tooltip position to the right:
+              <br />
+              <code>position: 'right'</code>
+              <br /> <br />
+              To prioritize how the automatic positioning works:
+              <br />
+              <code>tour.setOption('tooltipPosition', 'auto');</code>
+              <br />
+              <code>tour.setOption('positionPrecedence', ['left', 'right', 'top', 'bottom']);</code>
+
+            </Typography>
+          </CardContent>
+        </Card>
+
         <Typography>
           TODO comment about Shadow DOMs
           TODO comment about dialogs
