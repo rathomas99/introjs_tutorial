@@ -72,6 +72,22 @@ function App() {
     intro.start();
   };
 
+  const htmlHintsExample = () => {
+    const intro = introJs();
+    intro.addHints();
+  };
+
+  const programmaticHintsExample = () => {
+    const intro = introJs();
+    intro.setOptions({
+      hints: [
+        { hint: 'First hint', element: '#hint-one' },
+        { hint: 'Second hint', element: '#hint-two', hintAnimation: false }
+      ],
+    });
+    intro.addHints();
+  }
+
   const exampleHTMLCode = `<h1 data-step="1" data-intro="This is a tooltip!">Example</h1>`;
   const quickStart = `
 function startTour() {
@@ -171,13 +187,45 @@ tour.setOption('positionPrecedence', ['left', 'right', 'top', 'bottom']);`;
             </Button>
           </CardActions>
         </Card>
+        
+        <Card variant="outlined" className={classes.card} data-hint="I'm a hint!">
+          <CardContent>
+            <Typography variant="h3" gutterBottom>
+              Show Hints through HTML
+            </Typography>
+            <Typography>
+              Check the html hints <Link href="https://introjs.com/docs/hints/attributes/">documentation.</Link>
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button variant="contained" onClick={htmlHintsExample} data-hint="This hint is positioned bottom left" data-hintPosition="bottom-left">
+              Start Hints
+            </Button>
+          </CardActions>
+        </Card>
+
+        <Card variant="outlined" className={classes.card} id="hint-one">
+          <CardContent>
+            <Typography variant="h3" gutterBottom>
+              Show Hints Programmatically
+            </Typography>
+            <Typography>
+              Check the programmatic hints <Link href="https://introjs.com/docs/hints/options/">documentation.</Link>
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button variant="contained" onClick={programmaticHintsExample}>
+              Start Hints
+            </Button>
+          </CardActions>
+        </Card>
 
         <Card variant="outlined" className={classes.card} id="step4">
           <CardContent>
             <Typography variant="h3" gutterBottom>
               Write Programmatic Tours
             </Typography>
-            <Typography>
+            <Typography id="hint-two">
               One way to write tours is writing JavaScript and JSON.
               This is the 'programmatic' way of writing tours in Intro.js.
               <br />
