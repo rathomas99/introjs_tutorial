@@ -20,22 +20,14 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  pos: {
-    marginBottom: 12,
-  },
   card: {
     width: '50%',
+    marginBottom: '10px',
   },
 }));
 
 function App() {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <div className={classes.root}>
@@ -43,6 +35,7 @@ function App() {
         <Typography variant="h1" gutterBottom>
           Introduction to Intro.js
         </Typography>
+
         <Card variant="outlined" className={classes.card}> 
           <CardContent>
             <Typography variant="h3" gutterBottom>
@@ -51,7 +44,7 @@ function App() {
             <List>
               <ListItem>
                 <Link href="https://github.com/usablica/intro.js">
-                  Intro.js GitHub page
+                  Intro.js GitHub
                 </Link>
               </ListItem>
               <ListItem>
@@ -62,7 +55,20 @@ function App() {
             </List>
           </CardContent>
         </Card>
-       
+
+        <Card variant="outlined" className={classes.card}>
+          <CardContent>
+            <Typography variant="h3" gutterBottom>
+              Use NPM to Install Intro.js
+            </Typography>
+            <Typography>
+              You can install Intro.js using the node package manager.
+              <br />
+              <code>npm install intro.js --save</code>
+            </Typography>
+          </CardContent>
+        </Card>
+
         <Card variant="outlined" className={classes.card}>
           <CardContent>
             <Typography variant="h3" gutterBottom>
@@ -81,18 +87,7 @@ function App() {
             </Button>
           </CardActions>
         </Card>
-        <Card variant="outlined" className={classes.card}>
-          <CardContent>
-            <Typography variant="h3" gutterBottom>
-              Use NPM to Install Intro.js
-            </Typography>
-            <Typography>
-              Alternately, you can install Intro.js using the node package manager.
-              <br />
-              <code>npm install intro.js --save</code>
-            </Typography>
-          </CardContent>
-        </Card>
+        
       </Container>
     </div>
   );
