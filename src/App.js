@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import introJs from 'intro.js';
 import 'intro.js/introjs.css';
+import Highlight from 'react-highlight.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   card: {
-    width: '50%',
     marginBottom: '10px',
   },
 }));
@@ -73,9 +73,19 @@ function App() {
 
 
   }
-  const startBracket ="{";
-  const endBracket = "}";
+
   const exampleHTMLCode = `<h1 data-step="1" data-intro="This is a tooltip!">Example</h1>`;
+  const quickStart = `
+function startTour() {
+  const tour = introJs();
+  tour.start();
+}`;
+  const importCode = `
+import introJs from 'intro.js';
+import 'intro.js/introjs.css';`;
+  const automaticPositionCode = `
+tour.setOption('tooltipPosition', 'auto');
+tour.setOption('positionPrecedence', ['left', 'right', 'top', 'bottom']);`;
 
   return (
     <div className={classes.root}>
@@ -141,17 +151,16 @@ function App() {
             <Typography variant="h3" gutterBottom>
               Quick Start with HTML
             </Typography>
-            <Typography>
-              <code>function startTour() {startBracket}</code><br />
-              <code>var tour = introJs()</code> <br />
-              <code>tour.start();</code> <br />
-              <code>{endBracket}</code>
-            </Typography>
+            <Highlight language="javascript">
+              {quickStart}
+            </Highlight>
             <br />
             <Typography>
               And in your HTML write:
               <br />
-              <code>{exampleHTMLCode}</code>
+              <Highlight language="javascript">
+                {exampleHTMLCode}
+              </Highlight>
               <br />
               Be sure to include <code>data-step</code> and <code>data-intro</code> for each element 
               you want to highlight.
@@ -180,9 +189,9 @@ function App() {
           <CardContent>
             <Typography variant="h3" gutterBottom>Using Intro.js with React</Typography>
             <Typography>
-              <code>import introJs from 'intro.js';</code>
-              <br />
-              <code>import 'intro.js/introjs.css';</code>
+              <Highlight language="javascript">
+                {importCode}
+              </Highlight>
             </Typography>
           </CardContent>
         </Card>
@@ -194,15 +203,13 @@ function App() {
               Note that it will only position itself to the indicated position so long as there is space.
               <br /> <br />
               To specify the tooltip position to the right:
-              <br />
-              <code>position: 'right'</code>
-              <br /> <br />
+              <Highlight>
+                {`position: 'right'`}
+              </Highlight>
               To prioritize how the automatic positioning works:
-              <br />
-              <code>tour.setOption('tooltipPosition', 'auto');</code>
-              <br />
-              <code>tour.setOption('positionPrecedence', ['left', 'right', 'top', 'bottom']);</code>
-
+              <Highlight language="javascript">
+                {automaticPositionCode}
+              </Highlight>
             </Typography>
           </CardContent>
         </Card>
