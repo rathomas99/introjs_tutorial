@@ -73,6 +73,9 @@ function App() {
 
 
   }
+  const startBracket ="{";
+  const endBracket = "}";
+  const exampleHTMLCode = `<h1 data-step="1" data-intro="This is a tooltip!">Example</h1>`;
 
   return (
     <div className={classes.root}>
@@ -133,13 +136,37 @@ function App() {
           </CardActions>
         </Card>
 
+        <Card variant="outlined" className={classes.card} >
+          <CardContent>
+            <Typography variant="h3" gutterBottom>
+              Quick Start with HTML
+            </Typography>
+            <Typography>
+              <code>function startTour() {startBracket}</code><br />
+              <code>var tour = introJs()</code> <br />
+              <code>tour.start();</code> <br />
+              <code>{endBracket}</code>
+            </Typography>
+            <br />
+            <Typography>
+              And in your HTML write:
+              <br />
+              <code>{exampleHTMLCode}</code>
+              <br />
+              Be sure to include <code>data-step</code> and <code>data-intro</code> for each element 
+              you want to highlight.
+            </Typography>
+          </CardContent>
+        </Card>
+
         <Card variant="outlined" className={classes.card} id="step4">
           <CardContent>
             <Typography variant="h3" gutterBottom>
               Write Programmatic Tours
             </Typography>
             <Typography>
-              One way to write tours is writing JSON. This is the 'programmatic' way of writing tours in Intro.js.
+              One way to write tours is writing JavaScript and JSON.
+              This is the 'programmatic' way of writing tours in Intro.js.
             </Typography>
           </CardContent>
           <CardActions>
