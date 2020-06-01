@@ -11,6 +11,8 @@ import {
   ListItem,
   Typography,
 } from '@material-ui/core';
+import introJs from 'intro.js';
+import 'intro.js/introjs.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +31,49 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
 
+  const programmaticExample = () => {
+    console.log('started');
+    const intro = introJs();
+    intro.setOptions({
+      steps: [
+        { 
+          intro: "This step isn't connected to any particular element"
+        },
+        {
+          element: '#step1',
+          intro: "This step is connected to an element with id 'step1'"
+        },
+        {
+          element: '#step2',
+          intro: "This step is positioned to the right",
+          position: 'right'
+        },
+        {
+          element: '#step3',
+          intro: 'This step is positioned to the left and shows another way of selecting elements.',
+          position: 'left'
+        },
+        {
+          element: '#step4',
+          intro: "This step is positioned on the bottom.",
+          position: 'bottom'
+        },
+        {
+          element: '#step5',
+          intro: 'This is the last step.'
+        }
+      ]
+    });
+
+    console.log('sigh');
+    console.log(intro);
+
+    intro.start();
+    console.log('started hypothetically');
+
+
+  }
+
   return (
     <div className={classes.root}>
       <Container>
@@ -36,7 +81,7 @@ function App() {
           Introduction to Intro.js
         </Typography>
 
-        <Card variant="outlined" className={classes.card}> 
+        <Card variant="outlined" className={classes.card} id="step1"> 
           <CardContent>
             <Typography variant="h3" gutterBottom>
               Helpful Resources
@@ -56,7 +101,7 @@ function App() {
           </CardContent>
         </Card>
 
-        <Card variant="outlined" className={classes.card}>
+        <Card variant="outlined" className={classes.card} id="step2">
           <CardContent>
             <Typography variant="h3" gutterBottom>
               Use NPM to Install Intro.js
@@ -69,7 +114,7 @@ function App() {
           </CardContent>
         </Card>
 
-        <Card variant="outlined" className={classes.card}>
+        <Card variant="outlined" className={classes.card} id="step3">
           <CardContent>
             <Typography variant="h3" gutterBottom>
               Download Intro.js
@@ -87,6 +132,39 @@ function App() {
             </Button>
           </CardActions>
         </Card>
+
+        <Card variant="outlined" className={classes.card} id="step4">
+          <CardContent>
+            <Typography variant="h3" gutterBottom>
+              Write Programmatic Tours
+            </Typography>
+            <Typography>
+              One way to write tours is writing JSON. This is the 'programmatic' way of writing tours in Intro.js.
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button variant="contained" onClick={programmaticExample}>
+              Start Tour
+            </Button>
+          </CardActions>
+        </Card>
+
+        <Card variant="outlined" className={classes.card}>
+          <CardContent>
+            <Typography variant="h3" gutterBottom>Using Intro.js with React</Typography>
+            <Typography>
+              <code>import introJs from 'intro.js';</code>
+              <br />
+              <code>import 'intro.js/introjs.css';</code>
+            </Typography>
+          </CardContent>
+        </Card>
+
+        <Typography>
+          TODO comment about Shadow DOMs
+          TODO comment about dialogs
+          TODO comment about stacking context
+        </Typography>
         
       </Container>
     </div>
