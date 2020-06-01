@@ -1,11 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -19,10 +15,6 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
-  title: {
-    flexGrow: 1,
-    fontSize: 14,
-  },
   bullet: {
     display: 'inline-block',
     margin: '0 2px',
@@ -30,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
   },
   pos: {
     marginBottom: 12,
+  },
+  card: {
+    width: '50%',
   },
 }));
 
@@ -40,49 +35,37 @@ function App() {
   return (
     <div className={classes.root}>
       <Container>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              News
-            </Typography>
-            <Button color="inherit">Login</Button>
-          </Toolbar>
-        </AppBar>
-        <header>
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-        <Card variant="outlined" className={classes.root}>
+        <Typography variant="h1" gutterBottom>
+          Introduction to Intro.js
+        </Typography>
+        <Card variant="outlined" className={classes.card}>
           <CardContent>
-            <Typography className={classes.title} color="textSecondary" gutterBottom>
-              Word of the Day
+            <Typography variant="h3" gutterBottom>
+              Download Intro.js
             </Typography>
-            <Typography variant="h5" component="h2">
-              be{bull}nev{bull}o{bull}lent
-            </Typography>
-            <Typography className={classes.pos} color="textSecondary">
-              adjective
-            </Typography>
-            <Typography variant="body2" component="p">
-              well meaning and kindly.
-              <br />
-              {'"a benevolent smile"'}
+            <Typography>
+              Intro.js doesn't have any dependencies. All you need is to add the JS and CSS file.
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Learn More</Button>
+            <Button
+              variant="contained"
+              href="https://github.com/usablica/intro.js/releases"
+            >
+              GitHub Releases
+            </Button>
           </CardActions>
+        </Card>
+        <Card variant="outlined" className={classes.card}>
+          <CardContent>
+            <Typography variant="h3" gutterBottom>
+              Use NPM to Install Intro.js
+            </Typography>
+            <Typography>
+              Alternately, you can install Intro.js using the node package manager.
+              <code>npm install intro.js --save</code>
+            </Typography>
+          </CardContent>
         </Card>
       </Container>
     </div>
