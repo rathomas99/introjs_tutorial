@@ -1,11 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import { Container } from '@material-ui/core';
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Container,
+  Link,
+  List,
+  ListItem,
+  Typography,
+} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,6 +43,26 @@ function App() {
         <Typography variant="h1" gutterBottom>
           Introduction to Intro.js
         </Typography>
+        <Card variant="outlined" className={classes.card}> 
+          <CardContent>
+            <Typography variant="h3" gutterBottom>
+              Helpful Resources
+            </Typography>
+            <List>
+              <ListItem>
+                <Link href="https://github.com/usablica/intro.js">
+                  Intro.js GitHub page
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link href="https://introjs.com/">
+                  Intro.js Website
+                </Link>
+              </ListItem>
+            </List>
+          </CardContent>
+        </Card>
+       
         <Card variant="outlined" className={classes.card}>
           <CardContent>
             <Typography variant="h3" gutterBottom>
@@ -63,6 +88,7 @@ function App() {
             </Typography>
             <Typography>
               Alternately, you can install Intro.js using the node package manager.
+              <br />
               <code>npm install intro.js --save</code>
             </Typography>
           </CardContent>
